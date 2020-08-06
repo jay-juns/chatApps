@@ -6,23 +6,20 @@ const addUser = ({ id, name, room }) => {
 
 	const existingUser = users.find((user) => user.room === room && user.name === name);
 
-	if(existingUser) {
-		return { error: '닉네임이 존재합니다' };
-	}
+  if(!name || !room) return { error: 'Username and room are required.' };
+  if(existingUser)  return { error: '닉네임이 존재합니다' };
 	
 	const user = { id, name, room };
 
 	users.push(user);
 
-	return { user }
+	return { user };
 }
 
 const removeUser = (id) => {
 	const index = users.findIndex((user) => user.id === id);
 
-	if(index !== -1) {
-		return users.splice(index, 1) [0];
-	}
+	if(index !== -1) return users.splice(index, 1) [0];
 }
 
 const getUser = (id) => users.find((user) => user.id === id); 
