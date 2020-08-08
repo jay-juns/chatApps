@@ -6,7 +6,7 @@ const addUser = ({ id, name, room }) => {
 
 	const existingUser = users.find((user) => user.room === room && user.name === name);
 
-  if(!name || !room) return { error: 'Username and room are required.' };
+  if(!name || !room) return { error: '닉네임과 방이름이 있어야 합니다.' };
   if(existingUser)  return { error: '닉네임이 존재합니다' };
 	
 	const user = { id, name, room };
